@@ -6,6 +6,7 @@
 
 Scene& Scene::import(string path)
 {
+    printf("importing scene\n");
     Assimp::Importer imp;
     auto scene = imp.ReadFile(path,
         aiProcess_Triangulate |
@@ -14,31 +15,35 @@ Scene& Scene::import(string path)
         aiProcess_CalcTangentSpace |
         aiProcess_LimitBoneWeights);
 
+    if (!scene)
+        printf("assimp scene null\n");
     for (uint i = 0; i < scene->mNumMaterials; ++i) {
         Material* mat = new Material();
         mat->import(this, scene->mMaterials[i]);
         materials.push_back(mat);
     }
 
+    printf("imported mats\n");
     for (uint i = 0; i < scene->mNumMeshes; ++i) {
         Mesh* mesh = new Mesh;
         mesh->import(this, scene->mMeshes[i]);
-        meshes.push_back(mesh);     
+        meshes.push_back(mesh);
     }
-
+    printf("imported meshes\n");
     for (uint i = 0; i < scene->mNumAnimations; ++i) {
         Animation* animation = new Animation;
         animation->import(this, scene->mAnimations[i]);
         animations.push_back(animation);
         active_animation = animation;
     }
-
+    printf("imported anims\n");
     root->import(this, scene->mRootNode);
-
+    printf("imported nodes\n");
     return *this;
 }
 
 void Scene::render() {
+    printf("rendering\n");
     Light light;
     light.create(0.1, 120, 60, glm::vec3(-15, 50, -10), glm::vec3(5, 0, 5));
     while (win.poll()) {
@@ -80,7 +85,7 @@ void Scene::render() {
 }
 
 void Scene::physics_demo() {
-	string base = PROJECT_BASE_BUILD_DIR;
+    string base = PROJECT_BASE_BUILD_DIR;
     import(base + "/cube/plane_cube.obj");
     for (auto node : root->children) {
         if (node->name == "Cube") {
@@ -125,8 +130,8 @@ Scene::Scene() : win(1600, 900, "OGL")
     auto diffuse = new Texture;
     auto normal = new Texture;
 
-    unsigned char diff[4] = { 255, 255, 255, 255 };
-    unsigned char norm[4] = { 0, 0, 127, 0 };
+    unsigned char diff[4] ={ 255, 255, 255, 255 };
+    unsigned char norm[4] ={ 0, 0, 127, 0 };
 
     diffuse->from_raw(diff, 1, 1, GL_RGBA);
     normal->from_raw(norm, 1, 1, GL_RGBA);
@@ -180,7 +185,7 @@ void Scene::update(float dt)
     }
 
     simulator.integrate(dt);
-    
+
     if (active_animation) {
         glm::mat4 bones[128];
         active_animation->update(dt * 25);
