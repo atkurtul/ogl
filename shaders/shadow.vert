@@ -1,4 +1,4 @@
-#version 460
+#version 330
 
 layout (location = 0) in vec3 pos;
 layout (location = 5) in uvec4 id;
