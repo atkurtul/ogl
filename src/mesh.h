@@ -8,9 +8,9 @@ struct Mesh {
 	uint vsize;
 	uint isize;
 
-	const Material* material = 0;
+	const Material* material;
 
-	bool animated = 0;
+	bool animated;
 
 	glm::vec3 bbMin;
 	glm::vec3 bbMax;
@@ -18,6 +18,8 @@ struct Mesh {
 	void import(struct Scene* scene, const struct aiMesh* mesh);
 
 	void render(RenderState&);
+
+	Mesh();
 
 	~Mesh();
 };

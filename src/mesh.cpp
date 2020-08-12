@@ -156,6 +156,17 @@ void Mesh::render(RenderState& state) {
 	glDrawElements(GL_TRIANGLES, isize, GL_UNSIGNED_INT, 0);
 }
 
+Mesh::Mesh() : bbMin(), bbMax() {
+	material = nullptr;
+	animated = false;
+	vao = 0;
+	vbo = 0;
+	ibo = 0;
+	skin_buffer = 0;
+	vsize = 0;
+	isize = 0;
+}
+
 Mesh::~Mesh()
 {
 	glDeleteVertexArrays(1, &vao);
