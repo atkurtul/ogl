@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.12)
 
-project(ogl)
+project(ogl CXX)
 
 set( BUILD_SHARED_LIBS OFF )
 set( CMAKE_MACOSX_RPATH ON )
@@ -25,7 +25,6 @@ include_directories(
     ext/bullet3/src
 )
 
-find_package(Bullet REQUIRED)
 add_subdirectory(ext)
 
 add_subdirectory(src)

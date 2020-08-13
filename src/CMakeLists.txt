@@ -7,25 +7,17 @@ add_library(ogl ${PROJECT_SOURCES})
 
 target_include_directories(ogl PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-
 target_link_libraries(ogl PUBLIC 
     glfw 
     glad 
     glm 
     assimp 
-    ${BULLET_LIBRARIES}
+    BulletSoftBody 
+    BulletDynamics 
+    BulletCollision 
+    BulletInverseDynamics 
+    Bullet3Common
+    LinearMath
 )
-# target_link_libraries(ogl PUBLIC 
-#     glfw 
-#     glad 
-#     glm 
-#     assimp 
-#     BulletSoftBody 
-#     BulletDynamics 
-#     BulletCollision 
-#     BulletInverseDynamics 
-#     Bullet3Common
-#     LinearMath
-# )
 
 add_subdirectory(demos)
