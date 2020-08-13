@@ -17,8 +17,6 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-
-
 include_directories( 
     ext/
     ext/glfw/include
@@ -27,6 +25,7 @@ include_directories(
     ext/bullet3/src
 )
 
+find_package(Bullet REQUIRED)
 add_subdirectory(ext)
 
 add_subdirectory(src)
