@@ -80,4 +80,4 @@ add_subdirectory(bullet3 )
 
 add_subdirectory(glm)
 
-add_library(glad glad/glad.c)
+add_library(glad glad/glad.cpp)
