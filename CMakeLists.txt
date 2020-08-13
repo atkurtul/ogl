@@ -17,7 +17,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-add_subdirectory(ext)
+
 
 include_directories( 
     ext/
@@ -26,6 +26,8 @@ include_directories(
     ext/glm/
     ext/bullet3/src
 )
+
+add_subdirectory(ext)
 
 add_subdirectory(src)
 
