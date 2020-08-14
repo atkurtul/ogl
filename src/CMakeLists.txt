@@ -5,9 +5,7 @@ file(GLOB PROJECT_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp ${CMAKE_CURRENT_SOUR
 
 add_library(ogl ${PROJECT_SOURCES})
 
-target_include_directories(ogl PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-
-target_link_libraries(ogl PUBLIC 
+target_link_libraries(ogl 
     glfw 
     glad 
     glm 
