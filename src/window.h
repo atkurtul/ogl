@@ -1,26 +1,27 @@
 #pragma once
-#include "common.h"
 #include "GLFW/glfw3.h"
+#include "common.h"
+
 
 struct Window {
-	GLFWwindow* win;
+  GLFWwindow* win;
 
-	glm::vec2 mdelta;
-	glm::vec2 mpos;
+  glm::vec2 mdelta;
+  glm::vec2 mpos;
 
-	bool cursor;
+  bool cursor;
 
-	float time;
-	float dt;
-	Window(int x, int y, const char* name);
+  float time;
+  float dt;
+  Window(const char* name);
 
-	~Window();
-	
-	bool poll();
+  ~Window();
 
-	bool get_key(int keycode) const;
+  bool poll();
 
-	void toggle_mouse(int state);
+  bool get_key(int keycode) const;
 
-	void get_size(int& w, int& h);
+  void toggle_mouse(int state);
+
+  void get_size(int& w, int& h);
 };

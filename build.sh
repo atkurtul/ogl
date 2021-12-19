@@ -1,9 +1,8 @@
 #!/bin/sh
 
-rm -rf build
 mkdir build
 
 cd build
-cmake ..
-make -j8
+cmake .. -DCMAKE_BUILD_TYPE=Release
+cmake --build . -j8 --config Release
 
